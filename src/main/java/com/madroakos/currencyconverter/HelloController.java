@@ -124,7 +124,7 @@ public class HelloController implements Initializable {
 
     @FXML
     private void handleInputChange() {
-        if (baseCurrencyValue != null) {
+        if (!baseCurrencyValue.getCharacters().isEmpty()) {
             double baseValue = 0;
             double returnValue = 0;
             for (Currencies c : currencies) {
@@ -140,6 +140,8 @@ public class HelloController implements Initializable {
                 double equals = (returnValue / baseValue) * Double.parseDouble(baseCurrencyValue.textProperty().getValue());
                 returnCurrencyValue.setText(String.format("%.3f", equals));
             }
+        } else {
+            returnCurrencyValue.setText("");
         }
     }
 }
